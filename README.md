@@ -1,1 +1,1 @@
-# Dice 01
+# Kostky 01
