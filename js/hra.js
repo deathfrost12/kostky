@@ -1,6 +1,10 @@
+let jmeno1 ="Hráč 1";
+let jmeno2 ="Hráč 2";
 const dice = document.getElementById('dice');
 const playButton = document.getElementById('play');
 const result = document.getElementById('result');
+const buttonj1 = document.getElementById("buttonj1");
+const buttonj2 = document.getElementById("buttonj2");
 let turn = [];
 let timer = false;
 let rounds = [];
@@ -38,9 +42,7 @@ function min(index) {
  }
 
 function stats(index) {
-    //player1.style.left = `${sum(0) * 10}px`;
-    //player2.style.left = `${sum(1) * 10}px`;
-    let results = `<h3 class="text-center">PLAYER ${index+1}</h3>`;
+    let results = `<h3 class="text-center">${jmeno1}</h3>`;
     results +=  `<p>Aktuální hod: ${turn[index]}</p>`;
     results += `<p>Hody: ${rounds[index]}</p>`;
     results += `<p>Počet hodů: ${rounds[index].length}</p>`;
@@ -50,18 +52,39 @@ function stats(index) {
     results += `<p>Nejnižší hod: <img src="img/kostka${(min(index))}.png" width="20"></p>`;
     return results;
 }
+buttonj1.addEventListener("click", function () {
+    jmeno1 = prompt("Zadej cele jmeno", "Hráč");
+   console.log(`Zadané jméno je ${jmeno1}  `);
+   document.getElementById('jmeno1').innerHTML = `<h1>${jmeno1}</h1>`;
+
+})
+
+buttonj2.addEventListener("click", function () {
+    jmeno2 = prompt("Zadej cele jmeno", "Hráč");
+   console.log(`Zadané jméno je ${jmeno2} `);
+   document.getElementById('jmeno2').innerHTML = `<h1>${jmeno2}</h1>`;
+
+})
 
 playButton.addEventListener('click', function() {
     if (!timer) {
         timer = setInterval(animation, 100);
-        playButton.src="img/dice-roll.gif";
     } else {
         clearInterval(timer);
         timer = false;
-        playButton.src="img/dice-roll.gif";
         rounds[0].push(turn[0]);
         rounds[1].push(turn[1]);
-        result1.innerHTML = stats(0);
+        result1.innerHTML = stats(0);   
         result2.innerHTML = stats(1);
     }
 });
+
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("img/pngegg.png")) {
+        image.src = "img/pngwing.png";
+    }
+    else {
+        image.src = "img/pngegg.png";
+    }
+}

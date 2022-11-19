@@ -10,3 +10,9 @@
 .background {
     width: 100%;
 }
+
+.tlacitko{
+    color: white;
+    background-color: rgb(215, 88, 4);
+     margin-bottom: 10px;
+}
